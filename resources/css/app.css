@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   Custom base tweaks (mirip SIBARAKU minimal clean)
+   ========================================================= */
+@layer base {
+  html, body {
+    @apply bg-slate-50 text-slate-800 antialiased;
+  }
+
+  h1 { @apply text-2xl font-semibold text-slate-900; }
+  h2 { @apply text-xl font-semibold text-slate-900; }
+  h3 { @apply text-lg font-semibold text-slate-900; }
+
+  label {
+    @apply text-sm font-medium text-slate-700;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  input[type="email"],
+  input[type="password"],
+  select,
+  textarea {
+    @apply w-full rounded-lg border-slate-300 focus:border-indigo-500 focus:ring-indigo-500;
+  }
+}
+
+/* =========================================================
+   Components layer: tombol, tabel, badge, card, form
+   ========================================================= */
+@layer components {
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium
+           transition focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  .btn-primary {
+    @apply btn bg-indigo-600 text-white hover:bg-indigo-700 focus:ring-indigo-600;
+  }
+  .btn-secondary {
+    @apply btn bg-slate-100 text-slate-800 hover:bg-slate-200 focus:ring-slate-300;
+  }
+  .btn-danger {
+    @apply btn bg-rose-600 text-white hover:bg-rose-700 focus:ring-rose-600;
+  }
+  .btn-warning {
+    @apply btn bg-amber-500 text-white hover:bg-amber-600 focus:ring-amber-500;
+  }
+  .btn-success {
+    @apply btn bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-600;
+  }
+
+  /* Cards (global) */
+  .card {
+    @apply rounded-2xl bg-white shadow-sm ring-1 ring-slate-200;
+  }
+  .card-header {
+    @apply border-b border-slate-100 px-5 py-4;
+  }
+  .card-body {
+    @apply px-5 py-4;
+  }
+
+  /* Table (global) */
+  .table-wrapper {
+    @apply overflow-x-auto rounded-2xl bg-white shadow-sm ring-1 ring-slate-200;
+  }
+  table.table {
+    @apply w-full text-sm;
+  }
+  table.table thead th {
+    @apply whitespace-nowrap bg-slate-50 px-4 py-3 text-left font-semibold text-slate-700;
+  }
+  table.table tbody td {
+    @apply whitespace-nowrap border-t border-slate-100 px-4 py-3 align-middle;
+  }
+  table.table tbody tr:hover {
+    @apply bg-slate-50/60;
+  }
+
+  /* Badge (global) */
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+  .badge-success {
+    @apply badge bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200;
+  }
+  .badge-warning {
+    @apply badge bg-amber-50 text-amber-700 ring-1 ring-amber-200;
+  }
+  .badge-danger {
+    @apply badge bg-rose-50 text-rose-700 ring-1 ring-rose-200;
+  }
+  .badge-info {
+    @apply badge bg-indigo-50 text-indigo-700 ring-1 ring-indigo-200;
+  }
+
+  /* Form helpers */
+  .form-group {
+    @apply space-y-1.5;
+  }
+  .form-hint {
+    @apply text-xs text-slate-500;
+  }
+  .form-error {
+    @apply text-xs text-rose-600;
+  }
+
+  /* Search input */
+  .search-input {
+    @apply w-full rounded-lg border-slate-300 bg-white px-3 py-2 text-sm
+           placeholder:text-slate-400 focus:border-indigo-500 focus:ring-indigo-500;
+  }
+
+  /* Sidebar + topbar feel */
+  .sidebar-link {
+    @apply flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium
+           text-slate-700 hover:bg-slate-100 hover:text-slate-900;
+  }
+  .sidebar-link.active {
+    @apply bg-indigo-50 text-indigo-700 ring-1 ring-indigo-100;
+  }
+
+  /* =========================================================
+     Clean Corporate Dashboard Add-ons
+     (tidak merusak style halaman lain)
+     ========================================================= */
+
+  /* Metric cards khusus dashboard */
+  .card-metric {
+    @apply p-5 flex items-center gap-4;
+  }
+
+  .card-title {
+    @apply text-xs uppercase tracking-wide text-slate-500 font-semibold;
+  }
+  .card-value {
+    @apply text-2xl font-bold text-slate-900 mt-1;
+  }
+  .card-sub {
+    @apply text-xs text-slate-500 mt-1;
+  }
+
+  .metric-icon {
+    @apply w-11 h-11 rounded-xl bg-slate-900 text-white grid place-items-center shrink-0;
+  }
+
+  /* Panel section dashboard */
+  .panel {
+    @apply bg-white rounded-2xl border border-slate-200 shadow-sm p-4;
+  }
+  .panel-header {
+    @apply flex items-center justify-between mb-3;
+  }
+  .panel-title {
+    @apply font-semibold text-slate-900;
+  }
+  .panel-sub {
+    @apply text-xs text-slate-500 mt-0.5;
+  }
+
+  /* Table wrap khusus dashboard */
+  .table-wrap {
+    @apply overflow-x-auto rounded-xl border border-slate-100;
+  }
+
+  /* Empty state row */
+  .empty-state {
+    @apply text-center text-slate-500 py-8;
+  }
+
+  /* Badge tambahan red/green/yellow buat dashboard */
+  .badge-red {
+    @apply badge bg-red-50 text-red-700 ring-1 ring-red-200;
+  }
+  .badge-green {
+    @apply badge bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200;
+  }
+  .badge-yellow {
+    @apply badge bg-amber-50 text-amber-700 ring-1 ring-amber-200;
+  }
+}
+
+/* =========================================================
+   Utilities layer: kecil-kecil buat polishing
+   ========================================================= */
+@layer utilities {
+  .text-muted {
+    @apply text-slate-500;
+  }
+  .section-title {
+    @apply mb-4 text-lg font-semibold text-slate-900;
+  }
+  .page-padding {
+    @apply p-4 md:p-6;
+  }
+}
