@@ -296,10 +296,26 @@ td, th {
 
         <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">Beranda</a>
 
-        <div class="nav-title">MASTER DATA</div>
-        <a href="{{ route('categories.index') }}" class="nav-link {{ request()->routeIs('categories.*') ? 'active' : '' }}">Kategori</a>
-        <a href="{{ route('suppliers.index') }}" class="nav-link {{ request()->routeIs('suppliers.*') ? 'active' : '' }}">Supplier</a>
-        <a href="{{ route('products.index') }}" class="nav-link {{ request()->routeIs('products.*') ? 'active' : '' }}">Produk</a>
+@if(auth()->user()->role == 'admin')
+
+<div class="nav-title">MASTER DATA</div>
+
+<a href="{{ route('categories.index') }}"
+   class="nav-link {{ request()->routeIs('categories.*') ? 'active' : '' }}">
+    Kategori
+</a>
+
+<a href="{{ route('suppliers.index') }}"
+   class="nav-link {{ request()->routeIs('suppliers.*') ? 'active' : '' }}">
+    Supplier
+</a>
+
+<a href="{{ route('products.index') }}"
+   class="nav-link {{ request()->routeIs('products.*') ? 'active' : '' }}">
+    Produk
+</a>
+
+@endif
 
         <div class="nav-title">TRANSAKSI</div>
         <a href="{{ route('stock-ins.index') }}" class="nav-link {{ request()->routeIs('stock-ins.*') ? 'active' : '' }}">Stok Masuk</a>

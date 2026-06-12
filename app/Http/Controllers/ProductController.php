@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Product, Category, Supplier};
+use App\Models\{Product, Category, Supplier, StockIn};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -82,7 +82,18 @@ class ProductController extends Controller
                 ->store('products', 'public');
         }
 
-        Product::create($data);
+        $product = Product::create($data);
+
+        if ($product->stock > 0) {
+            StockIn::create([
+                'product_id' => $product->id,
+                'qty'        => $product->stock,
+                'buy_price'  => $product->buy_price,
+                'note'       => null,
+                'date'       => now()->toDateString(),
+                'user_id'    => auth()->id(),
+            ]);
+        }
 
         return redirect()
             ->route('products.index')

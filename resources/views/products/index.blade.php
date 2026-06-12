@@ -71,12 +71,6 @@
 
                     <td>
                         {{ $p->name }}
-
-                        @if($p->is_low_stock)
-                            <span class="badge badge-red">
-                                Menipis
-                            </span>
-                        @endif
                     </td>
 
                     <td>{{ $p->category?->name }}</td>
